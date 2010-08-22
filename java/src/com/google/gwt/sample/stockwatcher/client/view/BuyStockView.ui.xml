@@ -1,0 +1,36 @@
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<ui:style>
+		
+	</ui:style>
+
+	<g:DecoratorPanel>
+		<g:FormPanel>
+			<g:VerticalPanel>
+
+				<g:HorizontalPanel>
+					<g:Label>Symbol</g:Label>
+					<g:TextBox ui:field="symbol" readOnly="true"></g:TextBox>
+				</g:HorizontalPanel>
+
+				<g:HorizontalPanel>
+					<g:Label>Price</g:Label>
+					<g:TextBox ui:field="price" readOnly="true"></g:TextBox>
+				</g:HorizontalPanel>
+
+				<g:HorizontalPanel>
+					<g:Label>Amount</g:Label>
+					<g:TextBox ui:field="amount"></g:TextBox>
+				</g:HorizontalPanel>
+
+				<g:HorizontalPanel>
+					<g:Button ui:field="saveButton">Save</g:Button>
+					<g:Button ui:field="cancelButton">Cancel</g:Button>
+				</g:HorizontalPanel>
+
+			</g:VerticalPanel>
+
+		</g:FormPanel>
+	</g:DecoratorPanel>
+</ui:UiBinder>
