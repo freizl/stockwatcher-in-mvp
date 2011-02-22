@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark" creationComplete="application1_creationCompleteHandler(event)"
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.freizl.stockwatcher.presenter.StockWatcherPresenter;
+			import com.freizl.stockwatcher.presenter.StockWatcherPresenterImpl;
+			import com.freizl.stockwatcher.view.StockWatcherView;
+			import com.freizl.stockwatcher.view.StockWatcherViewImpl;
+			
+			import mx.events.FlexEvent;
+			
+
+			protected function application1_creationCompleteHandler(event:FlexEvent):void
+			{
+				var view:StockWatcherView = new StockWatcherViewImpl();
+				var presenter:StockWatcherPresenter = new StockWatcherPresenterImpl(view);
+				presenter.bind();
+				
+				this.addElement(presenter.asComponent());
+			}
+			
+		]]>
+	</fx:Script>
+	
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+</s:Application>

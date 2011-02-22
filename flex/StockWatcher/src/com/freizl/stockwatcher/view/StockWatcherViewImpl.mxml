@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" implements="com.freizl.stockwatcher.view.StockWatcherView"
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="458" height="504">
+	<fx:Script>
+		<![CDATA[
+			
+			import mx.core.IButton;
+			import mx.controls.Alert;
+			import mx.utils.StringUtil;
+			
+			//TODO override annotation
+			public function getAddButton():IButton 
+			{
+				return addButton;
+			}
+			
+			public function addRecord():void 
+			{
+				var value:String = input.text as String;
+				
+				if ( ! value || ! StringUtil.trim(value) ) {
+					Alert.show("Invalid input.");
+					return;
+				}
+				
+				//TODO: create model object
+				var obj:Object = new Object();
+				obj.price = Math.round(Math.random() * 100);
+				obj.change = Math.random();
+				obj.symbol = value;
+				
+				data.addItem(obj);
+				input.text = '';
+			}
+			
+			public function setRecords(x:ArrayCollection):void
+			{
+				data = x;
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<s:ArrayCollection id="data" />
+	</fx:Declarations>
+	
+	<s:VGroup x="10" y="10" width="380" height="473">
+		<mx:DataGrid width="380" height="315" dataProvider="{data}">
+			<mx:columns>
+				<mx:DataGridColumn headerText="Symbol" dataField="symbol"/>
+				<mx:DataGridColumn headerText="Price" dataField="price"/>
+				<mx:DataGridColumn headerText="Change" dataField="change"/>
+			</mx:columns>
+		</mx:DataGrid>
+		<s:HGroup width="378" height="34">
+			<s:TextInput id="input"/>
+			<s:Button label="Add" id="addButton" />
+		</s:HGroup>
+	</s:VGroup>
+</s:Group>
