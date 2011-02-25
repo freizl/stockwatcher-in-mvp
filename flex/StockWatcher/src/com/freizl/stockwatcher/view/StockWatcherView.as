@@ -8,6 +8,5 @@ package com.freizl.stockwatcher.view
 	{
 		function addRecord():void;
 		function setRecords(x:ArrayCollection):void;
-		function setPresenter(p:StockWatcherPresenter):void;
 	}
 }

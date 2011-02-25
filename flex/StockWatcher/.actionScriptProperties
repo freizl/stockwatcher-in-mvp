@@ -14,9 +14,8 @@
   </compiler>
   <applications>
     <application path="com/freizl/stockwatcher/StockWatcher.mxml"/>
+    <application path="com/freizl/stockwatcher/view/Hello.mxml"/>
   </applications>
   <modules/>
   <buildCSSFiles/>
 </actionScriptProperties>
-
-

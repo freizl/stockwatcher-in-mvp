@@ -5,20 +5,21 @@ package com.freizl.stockwatcher.presenter
 	import mx.collections.ArrayCollection;
 	import mx.core.IVisualElementContainer;
 	
-	public class StockWatcherPresenterImpl implements Presenter, StockWatcherPresenter
+	public class StockWatcherPresenterImpl implements StockWatcherPresenter
 	{
 		private var _view:StockWatcherView
 		
-		public function StockWatcherPresenterImpl(view:StockWatcherView)
+		public function StockWatcherPresenterImpl()
 		{
-			this._view = view;
-			this._view.setPresenter(this);
 		}
 		
-		public function go(widget:IVisualElementContainer):void
+		public function go(widget:IVisualElementContainer = null):void
 		{
-			widget.removeAllElements();
-			widget.addElement(this._view.asWidget());
+			if(widget) 
+			{
+				widget.removeAllElements();
+				widget.addElement(this._view.asWidget());
+			}
 			fetchInitData();
 		}
 		
@@ -34,6 +35,11 @@ package com.freizl.stockwatcher.presenter
 				{symbol:"11", price:123, change:0.8},
 				{symbol:"22", price:53, change:0.3}];
 			this._view.setRecords(new ArrayCollection(x));
+		}
+		
+		public function set view(value:StockWatcherView):void
+		{
+			_view = value;
 		}
 		
 		// TODO: what's diff between parameter useCapture true|false

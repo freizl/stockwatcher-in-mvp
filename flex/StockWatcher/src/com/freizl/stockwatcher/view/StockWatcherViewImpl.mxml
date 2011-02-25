@@ -2,6 +2,11 @@
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" implements="com.freizl.stockwatcher.view.StockWatcherView"
 		 xmlns:mx="library://ns.adobe.com/flex/mx" width="458" height="504">
+	
+	<fx:Metadata>
+		[Style(name="presenter", type="StockWatcherPresenter")]
+	</fx:Metadata>
+	
 	<fx:Script>
 		<![CDATA[
 			import com.freizl.stockwatcher.presenter.StockWatcherPresenter;
@@ -9,19 +14,23 @@
 			import mx.controls.Alert;
 			import mx.core.IVisualElement;
 			import mx.utils.StringUtil;
-			[Binable]
-			private var _p:StockWatcherPresenter;
 			
-			public function setPresenter(presenter:StockWatcherPresenter):void
+			[Binable]
+			private var _presenter:StockWatcherPresenter;
+			
+			public function set presenter(presenter:StockWatcherPresenter):void
 			{
-				_p = presenter;
+				_presenter = presenter;
+				_presenter.view = this;
+				_presenter.go();
 			}
 			
 			public function addRecord():void 
 			{
 				var value:String = input.text as String;
 				
-				if ( ! value || ! StringUtil.trim(value) ) {
+				if ( ! value || ! StringUtil.trim(value) ) 
+				{
 					Alert.show("Invalid input.");
 					return;
 				}
@@ -48,12 +57,12 @@
 			
 			protected function addButtonClickHandler(event:MouseEvent):void
 			{
-				if (this._p) 
+				if (this._presenter) 
 				{
-					_p.onAddButtonClicked();
+					_presenter.onAddButtonClicked();
 				}
 			}
-			
+
 		]]>
 	</fx:Script>
 	
