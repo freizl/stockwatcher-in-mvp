@@ -4,7 +4,7 @@ package com.freizl.stockwatcher.presenter
 
 	public interface StockWatcherPresenter
 	{
-		function asComponent():StockWatcherView;
-		function bind():void;
+//		function asComponent():StockWatcherView;
+//		function bind():void;
 	}
 }

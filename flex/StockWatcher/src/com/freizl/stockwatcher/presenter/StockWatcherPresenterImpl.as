@@ -6,18 +6,25 @@ package com.freizl.stockwatcher.presenter
 	import flash.events.MouseEvent;
 	
 	import mx.collections.ArrayCollection;
-	import mx.controls.Alert;
+	import mx.core.IVisualElementContainer;
 	
-	public class StockWatcherPresenterImpl implements StockWatcherPresenter
+	public class StockWatcherPresenterImpl implements Presenter,StockWatcherPresenter
 	{
 		private var view:StockWatcherView
 		
 		public function StockWatcherPresenterImpl(view:StockWatcherView)
 		{
 			this.view = view;
+			bind();
 		}
 		
-		public function bind():void 
+		public function go(widget:IVisualElementContainer):void
+		{
+			widget.removeAllElements();
+			widget.addElement(this.view.asWidget());
+		}
+		
+		private function bind():void 
 		{
 			// TODO: what's diff between parameter useCapture true|false
 			this.view.getAddButton().addEventListener(MouseEvent.CLICK, addHandler, false, 0);
@@ -38,9 +45,5 @@ package com.freizl.stockwatcher.presenter
 			return new ArrayCollection(x);
 		}
 		
-		public function asComponent():StockWatcherView 
-		{
-			return this.view;
-		}
 	}
 }

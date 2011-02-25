@@ -5,6 +5,7 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import com.freizl.stockwatcher.presenter.Presenter;
 			import com.freizl.stockwatcher.presenter.StockWatcherPresenter;
 			import com.freizl.stockwatcher.presenter.StockWatcherPresenterImpl;
 			import com.freizl.stockwatcher.view.StockWatcherView;
@@ -16,10 +17,9 @@
 			protected function application1_creationCompleteHandler(event:FlexEvent):void
 			{
 				var view:StockWatcherView = new StockWatcherViewImpl();
-				var presenter:StockWatcherPresenter = new StockWatcherPresenterImpl(view);
-				presenter.bind();
+				var presenter:Presenter = new StockWatcherPresenterImpl(view);
 				
-				this.addElement(presenter.asComponent());
+				presenter.go(this);
 			}
 			
 		]]>

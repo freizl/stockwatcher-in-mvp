@@ -4,9 +4,9 @@
 		 xmlns:mx="library://ns.adobe.com/flex/mx" width="458" height="504">
 	<fx:Script>
 		<![CDATA[
-			
-			import mx.core.IButton;
 			import mx.controls.Alert;
+			import mx.core.IButton;
+			import mx.core.IVisualElement;
 			import mx.utils.StringUtil;
 			
 			//TODO override annotation
@@ -37,6 +37,11 @@
 			public function setRecords(x:ArrayCollection):void
 			{
 				data = x;
+			}
+			
+			public function asWidget():IVisualElement
+			{
+				return this;
 			}
 			
 		]]>
