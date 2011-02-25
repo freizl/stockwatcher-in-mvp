@@ -6,20 +6,13 @@
 	<fx:Script>
 		<![CDATA[
 			import com.freizl.stockwatcher.presenter.Presenter;
-			import com.freizl.stockwatcher.presenter.StockWatcherPresenter;
-			import com.freizl.stockwatcher.presenter.StockWatcherPresenterImpl;
-			import com.freizl.stockwatcher.view.StockWatcherView;
-			import com.freizl.stockwatcher.view.StockWatcherViewImpl;
 			
 			import mx.events.FlexEvent;
 			
-
 			protected function application1_creationCompleteHandler(event:FlexEvent):void
 			{
-				var view:StockWatcherView = new StockWatcherViewImpl();
-				var presenter:Presenter = new StockWatcherPresenterImpl(view);
-				
-				presenter.go(this);
+				var appController:Presenter = new AppController();
+				appController.go(this);
 			}
 			
 		]]>
@@ -27,6 +20,5 @@
 	
 	
 	<fx:Declarations>
-		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 </s:Application>

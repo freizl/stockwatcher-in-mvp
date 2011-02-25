@@ -4,15 +4,17 @@
 		 xmlns:mx="library://ns.adobe.com/flex/mx" width="458" height="504">
 	<fx:Script>
 		<![CDATA[
+			import com.freizl.stockwatcher.presenter.StockWatcherPresenter;
+			
 			import mx.controls.Alert;
-			import mx.core.IButton;
 			import mx.core.IVisualElement;
 			import mx.utils.StringUtil;
+			[Binable]
+			private var _p:StockWatcherPresenter;
 			
-			//TODO override annotation
-			public function getAddButton():IButton 
+			public function setPresenter(presenter:StockWatcherPresenter):void
 			{
-				return addButton;
+				_p = presenter;
 			}
 			
 			public function addRecord():void 
@@ -44,6 +46,14 @@
 				return this;
 			}
 			
+			protected function addButtonClickHandler(event:MouseEvent):void
+			{
+				if (this._p) 
+				{
+					_p.onAddButtonClicked();
+				}
+			}
+			
 		]]>
 	</fx:Script>
 	
@@ -61,7 +71,7 @@
 		</mx:DataGrid>
 		<s:HGroup width="378" height="34">
 			<s:TextInput id="input"/>
-			<s:Button label="Add" id="addButton" />
+			<s:Button label="Add" id="addButton" click="addButtonClickHandler(event)"/>
 		</s:HGroup>
 	</s:VGroup>
 </s:Group>
